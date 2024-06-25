@@ -1,7 +1,14 @@
 #include <iostream>
 #include <cassert>
 #include <algorithm>
+#include <fstream>
+
 using namespace std;
+struct Element
+{
+    int key;
+    char value;
+};
 
 bool CheckSorted(int* arr, int size)
 {
@@ -15,9 +22,20 @@ bool CheckSorted(int* arr, int size)
 
 void Print(int* arr, int size)
 {
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size; ++i)
 		cout << arr[i] << " ";
 	cout << endl;
+}
+
+void Print(Element* arr, int size)
+{
+    for (int i = 0; i < size; ++i)
+        cout << arr[i].key << " ";
+    cout << endl;
+
+    for (int i = 0; i < size; ++i)
+        cout << arr[i].value << " ";
+    cout << endl;
 }
 
 int main()
@@ -89,6 +107,7 @@ int main()
 	}
 
 	// Selection Sort
+    // 가장 작은 수를 찾아서 계속 앞으로 옮기는 방식으로 구현
 	{
 		int arr[] = { 8, 3, 2, 5, 1, 1, 2, 5, 8, 9 };
 		int size = sizeof(arr) / sizeof(arr[0]);
@@ -105,6 +124,62 @@ int main()
         cout << boolalpha;
         cout << CheckSorted(arr, size);
         cout << endl;
+    }
+    // 비교 횟수 세보기, 더 효율적인 방법은 없을까?
+	// https://en.wikipedia.org/wiki/Sorting_algorithm
+	{
+		ofstream ofile("log.txt");
+		for (int size = 1; size < 1000; size++)
+		{
+			int count = 0;
+			int* arr = new int[size];
+			for (int s = 0; s < size; s++) {
+				arr[s] = size - s;
+			}
+
+            int minIndex ;
+            for (int i = 0; i < size - 1; ++i)
+            {
+                minIndex = i;
+                for (int j = i + 1; j < size; ++j)
+                {
+                    count++;
+                    minIndex = arr[minIndex] < arr[j] ? minIndex : j;
+                }
+                swap(arr[i], arr[minIndex]);
+            }
+			//cout << size << ", " << count << endl;
+			ofile << size << ", " << count << endl;
+			// Print(arr, size);
+
+			delete[] arr;
+		}
+
+		ofile.close();
+	}
+
+
+    // 안정성 확인(unstable)
+    // key값은 같은데 value의 순서가 다르므로 unstable하다고 볼 수 있음
+    {
+        Element arr[] = { {2, 'a'}, {2, 'b'}, {1, 'c'} };
+        int size = sizeof(arr) / sizeof(arr[0]);
+
+        Print(arr, size);
+
+        int minIndex ;
+        for (int i = 0; i < size - 1; ++i)
+        {
+            minIndex = i;
+            for (int j = i + 1; j < size; ++j)
+            {
+                if (arr[j].key < arr[minIndex].key)
+                    minIndex = j;
+            }
+            swap(arr[i], arr[minIndex]);
+        }
+
+        Print(arr, size);
     }
 	return 0;
 }
