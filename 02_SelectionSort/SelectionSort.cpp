@@ -10,7 +10,7 @@ struct Element
     char value;
 };
 
-bool checkSorted(int* arr, int size)
+bool CheckSorted(int* arr, int size)
 {
     for (int i = 0; i < size - 1; ++i) {
         if (arr[i] > arr[i + 1]) {
@@ -20,14 +20,14 @@ bool checkSorted(int* arr, int size)
 	return true;
 }
 
-void print(int* arr, int size)
+void Print(int* arr, int size)
 {
 	for (int i = 0; i < size; ++i)
 		cout << arr[i] << " ";
 	cout << endl;
 }
 
-void print(Element* arr, int size)
+void Print(Element* arr, int size)
 {
     for (int i = 0; i < size; ++i)
         cout << arr[i].key << " ";
@@ -71,7 +71,7 @@ int main()
                     }
 
                     cout << boolalpha;
-                    cout << checkSorted(arr, size);
+                    cout << CheckSorted(arr, size);
                     cout << endl;
                 }
 	}
@@ -120,9 +120,9 @@ int main()
             }
             swap(arr[i], arr[minIndex]);
 		}
-        print(arr, size);
+        Print(arr, size);
         cout << boolalpha;
-        cout << checkSorted(arr, size);
+        cout << CheckSorted(arr, size);
         cout << endl;
     }
     // 비교 횟수 세보기, 더 효율적인 방법은 없을까?
@@ -150,7 +150,7 @@ int main()
             }
 			//cout << size << ", " << count << endl;
 			ofile << size << ", " << count << endl;
-			// print(arr, size);
+			// Print(arr, size);
 
 			delete[] arr;
 		}
@@ -165,7 +165,7 @@ int main()
         Element arr[] = { {2, 'a'}, {2, 'b'}, {1, 'c'} };
         int size = sizeof(arr) / sizeof(arr[0]);
 
-        print(arr, size);
+        Print(arr, size);
 
         int minIndex ;
         for (int i = 0; i < size - 1; ++i)
@@ -179,7 +179,7 @@ int main()
             swap(arr[i], arr[minIndex]);
         }
 
-        print(arr, size);
+        Print(arr, size);
     }
 	return 0;
 }

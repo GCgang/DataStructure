@@ -7,7 +7,7 @@ struct Element
     char value;
 };
 
-bool checkSorted(int* arr, int size)
+bool CheckSorted(int* arr, int size)
 {
     for (int i = 0; i < size - 1; ++i) {
         if (arr[i] > arr[i + 1])
@@ -16,7 +16,7 @@ bool checkSorted(int* arr, int size)
     return true;
 }
 
-void print(int* arr, int size)
+void Print(int* arr, int size)
 {
     for (int i = 0; i < size; ++i) {
         cout << arr[i] << " ";
@@ -24,7 +24,7 @@ void print(int* arr, int size)
     cout << endl;
 }
 
-void print(Element* arr, int size)
+void Print(Element* arr, int size)
 {
     for (int i = 0; i < size; ++i)
         cout << arr[i].key << " ";
@@ -42,7 +42,7 @@ int main()
     int arr[] = { 1, 2, 3, 4, 5}; // Best Case
     int size = sizeof(arr) / sizeof(arr[0]);
 
-    print(arr, size);
+    Print(arr, size);
     cout << endl;
 
     // Bubble Sort
@@ -58,7 +58,7 @@ int main()
                     swap(arr[j], arr[j + 1]);
                     isSwapped = true;
                 }
-                print(arr, size);
+                Print(arr, size);
             }
             cout << endl;
             if (isSwapped == false)
@@ -71,7 +71,7 @@ int main()
         Element arr[] = { {2, 'a'}, {2, 'b'}, {1, 'c'} };
         int size = sizeof(arr) / sizeof(arr[0]);
 
-        print(arr, size);
+        Print(arr, size);
 
         for (int i = 0; i < size -1; ++i)
         {
@@ -85,7 +85,7 @@ int main()
                 }
             }
         }
-        print(arr, size);
+        Print(arr, size);
     }
 
     return 0;

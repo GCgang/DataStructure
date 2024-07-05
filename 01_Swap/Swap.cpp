@@ -3,7 +3,7 @@
 using namespace std;
 
 // 포인터로 만들기
-void mySwapPtr (int* a, int* b)
+void MySwapPtr (int* a, int* b)
 {
     int tmp = *a;
     *a = *b;
@@ -11,14 +11,14 @@ void mySwapPtr (int* a, int* b)
 }
 
 // 레퍼런스로 만들기
-void mySwapRef (int& a, int&b)
+void MySwapRef (int& a, int&b)
 {
     int tmp = a;
     a = b;
     b = tmp;
 }
 
-bool checkSorted (int a, int b)
+bool CheckSorted (int a, int b)
 {
     return (a <= b ? true : false);
 }
@@ -36,10 +36,10 @@ int main()
         b = tmp;
         cout << "a: " << a << " " << "b: " << b << endl; // a: 2 b: 3
 
-        mySwapPtr(&a, &b);
+        MySwapPtr(&a, &b);
         cout << "a: " << a << " " << "b: " << b << endl; // a: 3 b: 2
 
-        mySwapRef(a, b);
+        MySwapRef(a, b);
         cout << "a: " << a << " " << "b: " << b << endl; // a: 2 b: 3
     }
 
@@ -54,7 +54,7 @@ int main()
         }
 
         if (arr[0] > arr[1])
-            mySwapRef(arr[0], arr[1]);
+            MySwapRef(arr[0], arr[1]);
         cout << arr[0] << " " << arr[1] << endl; // 2 3
     }
 
@@ -71,7 +71,7 @@ int main()
                 }
                 cout << boolalpha;
                 cout << arr[0] << " " << arr[1] << " "
-                << checkSorted(arr[0], arr[1]) << endl;
+                << CheckSorted(arr[0], arr[1]) << endl;
             }
         }
     }

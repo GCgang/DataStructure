@@ -9,7 +9,7 @@ struct Element
     char value;
 };
 
-bool checkSorted(int* arr, int size)
+bool CheckSorted(int* arr, int size)
 {
     for (int i = 0; i < size - 1; ++i) {
         if (arr[i] > arr[i + 1])
@@ -18,7 +18,7 @@ bool checkSorted(int* arr, int size)
     return true;
 }
 
-void print(int* arr, int size)
+void Print(int* arr, int size)
 {
     for (int i = 0; i < size; ++i) {
         cout << arr[i] << " ";
@@ -26,7 +26,7 @@ void print(int* arr, int size)
     cout << endl;
 }
 
-void print(Element* arr, int size)
+void Print(Element* arr, int size)
 {
     for (int i = 0; i < size; ++i)
         cout << arr[i].key << " ";
@@ -44,7 +44,7 @@ int main()
         int arr[] = {1, 2, 4, 5, 3, 6};
         int size = sizeof(arr) / sizeof(arr[0]);
 
-        print(arr, size);
+        Print(arr, size);
 
         int key = arr[4];
         for (int i = 4; i > 0; --i)
@@ -52,7 +52,7 @@ int main()
             if (arr[i - 1] <= key)
                 break;
             arr[i] = arr[i - 1]; 
-            print(arr, size);
+            Print(arr, size);
         }
     }
     // Insertion Sort
@@ -73,7 +73,7 @@ int main()
                 if (arr[j - 1] <= key)
                     break;
                 arr[j] = arr[j - 1];
-                print(arr, size);
+                Print(arr, size);
             }
             arr[j] = key;
 
@@ -81,12 +81,12 @@ int main()
             // while (i > 0 && arr[j - 1] > key)
             // {
             //     arr[j] = arr[j - 1];
-            //     print(arr, size);
+            //     Print(arr, size);
             //     --j;
             // }
             // arr[j] = key;
         }
-        print(arr, size);
+        Print(arr, size);
     }
     return 0;
 }
