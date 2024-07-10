@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void RecurPermutations(char* arr, int left, int right)
+void RecurPermutations(char* arr, int left, int right) // abc  0 2 abc  1 2  acb  2 2 acb  abc  
 {
 	// arr[left], ..., arr[right]
 
@@ -17,11 +17,11 @@ void RecurPermutations(char* arr, int left, int right)
     {
         for (int i = left; i <= right; ++i)
 		{
-			swap(arr[i], arr[left]);
+			swap(arr[left], arr[i]);
 
 			RecurPermutations(arr, left + 1, right);
 
-			swap(arr[i], arr[left]);
+			swap(arr[left], arr[i]);
 		}
     }
 
@@ -62,8 +62,8 @@ int main()
 	RecurPermutations(arr, 0, 2);
 	cout << endl;
 
-    // RecurPermutations(arr, 0, 3);
-	// cout << endl;
+    RecurPermutations(arr, 0, 3);
+	cout << endl;
 
     return 0;
 }
